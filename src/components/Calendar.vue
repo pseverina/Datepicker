@@ -320,6 +320,8 @@ export default {
 <style lang="scss" scoped>
 
 $dark-blue: #4D6C9E;
+$gray: #808080;
+$white: #FFFFFF;
 
 .datapicker {
   height: 40px;
@@ -337,7 +339,7 @@ $dark-blue: #4D6C9E;
     position: relative;
     height: 310px;
     width: 300px;
-    background: #ffffff;
+    background: $white;
     z-index: 100;
     font-size: 15px;
     border-radius: 20px;
@@ -372,7 +374,7 @@ $dark-blue: #4D6C9E;
 }
 
 .weekdays {
-  color: darkgrey;
+  color: $gray;
   display: inline-grid;
   grid-template-columns: repeat(7, 1fr);
   width: 100%;
@@ -410,7 +412,7 @@ $dark-blue: #4D6C9E;
     }
 
     &--grey:hover {
-      color: gray;
+      color: $gray;
     }
 
     &--grey:active {
@@ -418,7 +420,7 @@ $dark-blue: #4D6C9E;
     }
 
     &--selected {
-      color: #ffffff;
+      color: $white;
       background-color: $dark-blue;
       border-radius: 50%;
       outline: none;
@@ -429,7 +431,7 @@ $dark-blue: #4D6C9E;
     }
 
     &:focus {
-      color: #ffffff;
+      color: $white;
       background-color: $dark-blue;
       border-radius: 50%;
       outline: none;

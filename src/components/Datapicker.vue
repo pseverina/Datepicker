@@ -117,6 +117,10 @@ export default {
 <style lang="scss" scoped>
 
 $dark-blue: #4D6C9E;
+$error: #FC213B ;
+$light-gray: #DCDCDC;
+$gray: #808080;
+$white: #FFFFFF;
 
 .datapicker {
   height: 40px;
@@ -136,12 +140,12 @@ $dark-blue: #4D6C9E;
 
     &::placeholder {
       font-size: 16px;
-      color: grey;
+      color: $gray;
       padding: 0 5px;
     }
 
     &:hover {
-      border-color: darkgrey;
+      border-color: $gray;
     }
     
     &:focus {
@@ -150,15 +154,15 @@ $dark-blue: #4D6C9E;
     }
 
     &:disabled {
-      border-color: gainsboro;
-      color: gainsboro;
+      border-color: $light-gray;
+      color: $light-gray;
       &:hover {
-        border-color: gainsboro;
+        border-color: $light-gray;
       }
     }
 
     &--error:focus {
-      border: 1px #FC213B solid;
+      border: 1px $error solid;
     }
 
     &--active {
@@ -169,7 +173,7 @@ $dark-blue: #4D6C9E;
   &__calendar {
     height: 310px;
     width: 300px;
-    background: #FFFFFF;
+    background: $white;
     z-index: 100;
     font-size: 15px;
     border-radius: 20px;
@@ -179,46 +183,8 @@ $dark-blue: #4D6C9E;
     padding: 20px;
 
     &--active {
-      fill: grey;
+      fill: $gray;
     }
-  }
-}
-
-.calendar {
-  &--hidden {
-    display: none;
-  }
-  &--active {
-    display: inline;
-    fill: black;
-  }
-  &--nonactive {
-    display: inline;
-    fill: black;
-  }
-}
-
-.calendar:hover + .datapicker__input{
-  border-color: yellowgreen;
-}
-
-.datapicker__input:hover + .calendar,
-.datapicker__input:focus + .calendar,
-.datapicker__input:active + .calendar{
-  fill: black;
-}
-
-.datapicker__input:disabled + .calendar {
-  fill: gainsboro;
-}
-
-.close {
-  &--hidden {
-    display: none;
-  }
-  &--active {
-    display: inline;
-    cursor: pointer;
   }
 }
 
