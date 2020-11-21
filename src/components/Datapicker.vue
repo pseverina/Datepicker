@@ -2,6 +2,7 @@
   <div class="datapicker">
     <input
       v-model="internalValue"
+      v-mask="'##.##.####'"
       placeholder="ДД.MM.ГГГГ"
       class="datapicker__input"
       :class="svzDatapickerInput"
@@ -25,13 +26,16 @@
 
 <script>
 import Calendar from './Calendar'
+import { mask } from 'vue-the-mask'
 
 export default {
   name: 'Datapicker',
 
   components: {
-    Calendar,
+    Calendar
   },
+
+  directives: { mask },
 
   data () {
     return {

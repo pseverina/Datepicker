@@ -104,11 +104,11 @@ export default {
       days: [],
       prevMonthDays: [],
       nextMonthDays: [],
-      day: '',
+      day: this.inputDay,
       monthToString: '',
-      month: '',
+      month: this.inputMonth,
       monthNumber: '',
-      year: '',
+      year: this.inputYear,
       weekDays: [
         'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс',
       ],
@@ -153,13 +153,12 @@ export default {
   },
 
   methods: {
-    genCalendar (day = this.inputDay, month = this.inputMonth, year = this.inputYear) {
+    genCalendar () {
       this.days = []
       this.date = new Date()
-      console.log('day', day)
 
-      this.genMonth(month)
-      this.genYear(year)
+      this.genMonth(this.month)
+      this.genYear(this.year)
       const daysInMonth = new Date(this.year, this.month, 0).getDate()
       for (let eachDay = 1; eachDay < daysInMonth + 1; eachDay++) {
         this.days.push(eachDay)
@@ -180,15 +179,12 @@ export default {
     },
 
     genYear (year) {
-      if (year.length < 4) {
-        this.year = this.date.getFullYear()
-      } else {
-        this.year = year
-      }
+      (year.length < 4) ? this.year = this.date.getFullYear() : this.year = year
     },
 
     genPreviousMonth () {
       this.prevMonthDays = []
+
       // первый день недели месяца
       const prevMonth = this.month - 1
       const firstDay = new Date(this.year, prevMonth, 1)
@@ -198,6 +194,7 @@ export default {
       } else {
         firstDayWeekday = 6
       }
+
       // выщитываем, сколько дней из предыдущего месяца нунжо добавить в календарь
       const daysFromPreviousMonth = new Date(this.year, prevMonth, 0).getDate()
       const daysInFirstRow = daysFromPreviousMonth - firstDayWeekday
@@ -209,10 +206,12 @@ export default {
 
     genNextMonth () {
       this.nextMonthDays = []
+
       // последний день недели месяца
       const lastDayOfCurrentMonth = new Date(this.year, this.month, 0)
       const lastDayWeekday = lastDayOfCurrentMonth.getDay()
       const daysInLastRow = 7 - lastDayWeekday
+
       // считаем денёчки всё
       if (daysInLastRow !== 7) {
         for (let dayFromNextMonth = 1; dayFromNextMonth <= daysInLastRow; dayFromNextMonth++) {
@@ -225,7 +224,7 @@ export default {
       this.month++
       if (this.month > 12) {
         this.month = 1
-        this.year = this.year + 1
+        this.year = Number(this.year) + 1
       }
 
       this.monthToString = this.monthName[this.month - 1]
@@ -249,14 +248,14 @@ export default {
     },
 
     nextYear () {
-      this.year = this.year + 1
+      this.year = Number(this.year) + 1
       this.days = new Date(this.year, this.month, 0).getDate()
       this.genPreviousMonth()
       this.genNextMonth()
     },
 
     previousYear () {
-      this.year = this.year - 1
+      this.year = Number(this.year) - 1
       this.days = new Date(this.year, this.month, 0).getDate()
       this.genPreviousMonth()
       this.genNextMonth()
@@ -299,7 +298,7 @@ export default {
       if (this.month === 12) {
         this.month = 1
         this.monthNumber = '01'
-        this.year = this.year + 1
+        this.year = Number(this.year) + 1
       } else {
         this.month++
         (this.month < 10 && this.month[0] !== '0') ? this.monthNumber = '0' + this.month : this.monthNumber = this.month
