@@ -1,28 +1,32 @@
 <template>
   <div>
     <div class="datapicker__top-part">
-      <div
+      <img
+        src="../assets/arrow.svg"
         class="arrow"
         @click="previousMonth"
-      >&#60;</div>
+      />
       <span class="datapicker__calendar-month">
         {{ monthToString }}
       </span>
-      <div
-        class="arrow"
+      <img
+        src="../assets/arrow.svg"
+        class="arrow arrow-right"
         @click="nextMonth"
-      >&#62;</div>
-      <div
+      />
+      <img
+        src="../assets/arrow.svg"
         class="arrow"
         @click="previousYear"
-      >&#60;</div>
+      />
       <span class="datapicker__calendar-year">
         {{ year }}
       </span>
-      <div
-        class="arrow"
+      <img
+        src="../assets/arrow.svg"
+        class="arrow arrow-right"
         @click="nextYear"
-      >&#62;</div>
+      />
     </div>
 
     <thead class="weekdays">
@@ -54,13 +58,7 @@
         tabindex="0"
         @click="selectedValue(day)"
       >
-        <td
-          v-if="day === 1"
-          class="date__day--purple"
-        >
-          {{ day }}
-        </td>
-        <td v-else>
+        <td>
           {{ day }}
         </td>
       </tr>
@@ -321,71 +319,45 @@ export default {
 
 <style lang="scss" scoped>
 
+$dark-blue: #4D6C9E;
+
 .datapicker {
   height: 40px;
   width: 180px;
   position: relative;
-  margin: 0 !important;
+  margin: 0;
 
   &__top-part {
     display: flex;
     justify-content: space-between;
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
   }
 
   &__calendar {
-    margin-top: -4px;
-    position: absolute;
+    margin-top: 5px;
+    position: relative;
     height: 310px;
     width: 300px;
     background: #ffffff;
     z-index: 100;
     font-size: 15px;
     border-radius: 20px;
-    border: 1px solid gray;
+    border: 2px solid $dark-blue;
     padding-top: 6px;
     padding-bottom: 6px;
     padding: 20px;
 
-    &:before {
-      background: #ffffff;
-      background: -webkit-gradient(linear, left top, left bottom, from(grey), to(#ffffff));
-      background: linear-gradient(to bottom, grey, #ffffff);
-      border-radius: 20px;
-      content: "";
-      display: block;
-      height: 6px;
-      left: 3px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 98%;
-    }
-
     &-year {
       height: 20px;
       padding: 0 20px;
-      -webkit-user-select: none; /* Chrome/Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
+      font-weight: bold;
     }
 
     &-month {
       height: 20px;
       padding: 0 20px;
       width: 110px;
+      font-weight: bold;
       text-align: center;
-      -webkit-user-select: none; /* Chrome/Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
     }
   }
 }
@@ -393,6 +365,10 @@ export default {
 .arrow {
   cursor: pointer;
   height: 15px;
+
+  &-right {
+    transform: rotate(180deg);
+  }
 }
 
 .weekdays {
@@ -429,10 +405,6 @@ export default {
       background-color:  rgb(241, 237, 245);
     }
 
-    &--purple {
-      color: purple;
-    }
-
     &--grey {
       color:gainsboro;
     }
@@ -447,9 +419,9 @@ export default {
 
     &--selected {
       color: #ffffff;
-      background-color: purple !important;
+      background-color: $dark-blue;
       border-radius: 50%;
-      outline: none !important;
+      outline: none;
     }
 
     &:hover {
@@ -458,9 +430,9 @@ export default {
 
     &:focus {
       color: #ffffff;
-      background-color: purple;
+      background-color: $dark-blue;
       border-radius: 50%;
-      outline: none !important;
+      outline: none;
     }
   }
 }

@@ -115,33 +115,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+$dark-blue: #4D6C9E;
+
 .datapicker {
   height: 40px;
   width: 180px;
   position: relative;
-  margin: 0 !important;
+  margin: 0 auto;
 
   &__input {
     width: 200px;
     height: 25px;
     position: relative;
-    outline: none;
-    border-radius: 20px;
-    border: 1px solid  black;
+    border-radius: 10px;
     font-size: 15px;
+    text-align: center;
     margin-bottom: 3px;
+    outline: none;
+
     &::placeholder {
       font-size: 16px;
       color: grey;
       padding: 0 5px;
     }
+
     &:hover {
       border-color: darkgrey;
     }
+    
     &:focus {
-      border-color: purple;
+      border-color: $dark-blue;
       cursor: pointer;
     }
+
     &:disabled {
       border-color: gainsboro;
       color: gainsboro;
@@ -155,7 +162,7 @@ export default {
     }
 
     &--active {
-      border-color: purple;
+      border-color: $dark-blue;
     }
   }
 
@@ -166,28 +173,13 @@ export default {
     z-index: 100;
     font-size: 15px;
     border-radius: 20px;
-    border: 1px solid darkgrey;
+    border: 2px solid $dark-blue;
     padding-top: 6px;
     padding-bottom: 6px;
     padding: 20px;
 
     &--active {
       fill: grey;
-    }
-
-    &:before {
-      background: #FFFFFF;
-      background: gradient(linear, left top, left bottom, from(grey), to(#ffffff));
-      background: linear-gradient(to bottom, grey, #ffffff);
-      border-radius: 20px;
-      content: "";
-      display: block;
-      height: 6px;
-      left: 3px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 98%;
     }
   }
 }
